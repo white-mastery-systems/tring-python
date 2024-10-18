@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package tts;
+
+service TTSService {
+  // Stream text input to audio output
+  rpc GenerateTTS(TTSRequest) returns (TTSResponse);
+}
+
+message TTSRequest {
+  string text = 1;
+  string speaker = 2;
+  float speed = 3;
+  string quality = 4;
+}
+
+message TTSResponse {
+  bytes speech_audio = 1;  // Audio data in bytes
+}
